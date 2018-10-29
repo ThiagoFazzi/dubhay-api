@@ -14,5 +14,8 @@
   "scripts": {
     "start": "nodemon .",
     "compile": "tsc"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.0"
   }
 }
