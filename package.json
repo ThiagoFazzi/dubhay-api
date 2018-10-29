@@ -1,8 +1,18 @@
 {
   "name": "dubhay-api",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/ThiagoFazzi/dubhay-api.git",
+  "main": "target/index.js",
+  "repository": "https://github.com/ThiagoFazzi/dubhay-api",
   "author": "Thiago Fazzi",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "nodemon": "^1.18.5",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.1.3"
+  },
+  "scripts": {
+    "start": "nodemon .",
+    "compile": "tsc"
+  }
 }
