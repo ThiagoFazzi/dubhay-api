@@ -3,10 +3,14 @@ var app = express()
 
 const port = 8080
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/sensor/:id/status/:status', function(req, res) {
+    console.log(req.params)
+    res.send(req.params)
+})
 
-app.post('/', function (req, res) {
-    res.send('POST request to the homepage' + req)
+app.post('/about', function(req, res) {
+    console.log(req)
+    res.send(req.params)
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
