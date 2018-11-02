@@ -6,7 +6,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 3000
 
 var sensors = []
 
@@ -15,24 +15,18 @@ app.get('/', (req, res) => {
 	res.send('welcome to API')
 })
 
-app.get('/orsens', (req, res) => {
+app.get('/sensor', (req, res) => {
 	res.send({sensors: sensors})
 })
 
 
 app.get('/sensor/:id', (req, res) => {
 	const id = req.params.id
-	const sensor = sensor.filter(sensor => sensor.id === id)
+	const sensor = sensors.filter(s => s.id === id)
 	if(!sensor){
 		res.send('not found')
 	}else{
-		res.send(
- 			{
- 				sensor: {
- 					sensor
- 				}
- 			}
- 		)
+		res.send({sensor})
  	}
 });
 
@@ -46,7 +40,7 @@ app.post('/sensor', (req, res) => {
  		date: new Date()
 	}
 	
-	sensors.concat(sensor)
+	sensors.push(sensor)
 	
 	res.send(
  		{
