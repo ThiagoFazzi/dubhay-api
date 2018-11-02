@@ -1,6 +1,5 @@
 const express = require('express')
 const bodyParser = require('body-parser');
-//const WelcomeController = require('./controller')
 
 const app = express();
 
@@ -10,7 +9,6 @@ const port = process.env.PORT || 8080
 
 var sensors = []
 
-
 app.get('/', (req, res) => {
 	res.send('welcome to API')
 })
@@ -18,7 +16,6 @@ app.get('/', (req, res) => {
 app.get('/sensor', (req, res) => {
 	res.send({sensors: sensors})
 })
-
 
 app.get('/sensor/:id', (req, res) => {
 	const id = req.params.id
@@ -31,7 +28,6 @@ app.get('/sensor/:id', (req, res) => {
 });
 
 app.post('/sensor', (req, res) => {
-	
 	const sensor = {
 		id: req.body.id,
 		status: req.body.status,
@@ -39,13 +35,11 @@ app.post('/sensor', (req, res) => {
  		value: req.body.temp,
  		date: new Date()
 	}
-	
 	sensors.push(sensor)
 	
 	res.send(
  		{
- 			sensor: { sensor }
- 		
+ 			sensor: { sensor }	
  		}
  	)
 });
