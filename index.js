@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser');
+const cors = require('cors')
 
 const app = express();
 
@@ -9,11 +10,11 @@ const port = process.env.PORT || 8080
 
 var sensors = []
 
-app.get('/', (req, res) => {
+app.get('/', cors(), (req, res) => {
 	res.send('welcome to API')
 })
 
-app.get('/sensor', (req, res) => {
+app.get('/sensor', cors(), (req, res) => {
 	res.send({sensors: sensors})
 })
 
@@ -27,7 +28,8 @@ app.get('/sensor/:id', (req, res) => {
  	}
 });
 
-app.post('/sensor', (req, res) => {
+app.post('/sensor', cors(), (req, res) => {
+	sensors = []
 	const sensor = {
 		id: req.body.id,
 		status: req.body.status,
