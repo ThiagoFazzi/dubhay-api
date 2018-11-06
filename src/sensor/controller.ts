@@ -7,16 +7,19 @@ const router: Router = Router();
 var sensors: Array<Sensor> = []
 var valuesSent: Array<Sensor> = []
 
+//get all sensors measures
 router.get('/', Cors(), (req: Request, res: Response) => {
     console.log(req)
 	res.send({sensors: valuesSent})
 })
 
+//get all sensors are subscribed to the API
 router.get('/subscribed', Cors(), (req: Request, res: Response) => {
     console.log(req)
     res.send({sensors: sensors})
 })
 
+//get especific sensor measure by ID
 router.get('/:id', (req: Request, res: Response) => {
 	const id = req.params.id
 	const sensor = valuesSent.filter(s => s.id === id)
@@ -28,6 +31,8 @@ router.get('/:id', (req: Request, res: Response) => {
  	}
 });
 
+
+//post sensors measures - USE FOR SENSORS  
 router.post('/', Cors(), (req: Request, res: Response) => {
 	
 	const sensor = {
@@ -42,6 +47,8 @@ router.post('/', Cors(), (req: Request, res: Response) => {
 	res.send('OK')
 });
 
+
+//Sensors subscribe to API
 router.post('/new', Cors(), (req: Request, res: Response) => {
 
 	const sensor = {
@@ -56,12 +63,4 @@ router.post('/new', Cors(), (req: Request, res: Response) => {
 	res.send({ sensor })
 });
 
-
-
-
-
-
-
-
-// Export the express.Router() instance to be used by server.ts
 export const SensorController: Router = router;

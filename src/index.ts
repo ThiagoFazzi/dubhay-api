@@ -2,7 +2,6 @@ import express = require('express')
 import bodyParser = require('body-parser')
 import { SensorController } from './sensor/controller';
 
-
 const app = express();
 
 app.use(bodyParser.json());
