@@ -19,13 +19,8 @@ class CustomNamingStrategy extends DefaultNamingStrategy_1.DefaultNamingStrategy
 }
 exports.default = () => typeorm_1.createConnection({
     type: "postgres",
-    url: process.env.DATABASE_URL || 'postgres://postgres:secret@localhost:5432/uberfortickets',
-    entities: [
-        User,
-        Ticket,
-        Event,
-        Comment
-    ],
+    url: process.env.DATABASE_URL || 'postgres://postgres:secret@localhost:5432/sensorapi',
+    entities: [],
     synchronize: true,
     logging: true,
     namingStrategy: new CustomNamingStrategy()

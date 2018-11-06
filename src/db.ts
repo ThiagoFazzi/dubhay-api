@@ -27,12 +27,10 @@ class CustomNamingStrategy extends DefaultNamingStrategy implements NamingStrate
 export default () =>
   createConnection({
     type: "postgres",
-    url: process.env.DATABASE_URL || 'postgres://postgres:secret@localhost:5432/uberfortickets',
+    url: process.env.DATABASE_URL || 'postgres://postgres:secret@localhost:5432/sensorapi',
     entities: [
-      User,
-      Ticket,
-      Event,
-      Comment
+      //Sensor,
+
     ],
     synchronize: true, // careful with this in production!
     logging: true,
