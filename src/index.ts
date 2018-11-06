@@ -12,4 +12,4 @@ app.use('/sensor', SensorController)
 
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}/`);
-});
+})
