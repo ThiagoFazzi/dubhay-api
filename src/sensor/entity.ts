@@ -22,8 +22,8 @@ export default class Sensor extends BaseEntity {
   type?: string
 
   @IsString()
-  @Column('integer', { nullable: true })
-  value?: number
+  @Column('text', { nullable: true })
+  value?: string
 
   @Column('date', { nullable: true })
   date?: Date

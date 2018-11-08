@@ -45,13 +45,18 @@ router.patch('/:id', Cors(), (req: Request, res: Response) => {
   
   const id = req.body.id
   const update: Partial<Sensor> = req.body
-
-  const sensor = Sensor.findOne(id)
-  if (!sensor){
-    Sensor.merge(sensor, update).save()
-    .then(_ => res.send('OK'))
-    .catch(error => console.log(error))
-  }
+  
+  Sensor.findOne(id)
+  .then(sensor => {  
+    if (sensor){
+      Sensor.merge(sensor, update).save()
+      .then(s => {
+        console.log(s.value)
+        res.send(s)
+      })
+      .catch(error => console.log(error))
+    }
+  }).catch(error => console.log(error))
 });
 
 

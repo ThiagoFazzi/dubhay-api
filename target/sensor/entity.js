@@ -35,8 +35,8 @@ __decorate([
 ], Sensor.prototype, "type", void 0);
 __decorate([
     class_validator_1.IsString(),
-    typeorm_1.Column('integer', { nullable: true }),
-    __metadata("design:type", Number)
+    typeorm_1.Column('text', { nullable: true }),
+    __metadata("design:type", String)
 ], Sensor.prototype, "value", void 0);
 __decorate([
     typeorm_1.Column('date', { nullable: true }),

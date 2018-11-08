@@ -18,12 +18,17 @@ router.get('/:id', (req, res) => {
 router.patch('/:id', Cors(), (req, res) => {
     const id = req.body.id;
     const update = req.body;
-    const sensor = entity_1.default.findOne(id);
-    if (!sensor) {
-        entity_1.default.merge(sensor, update).save()
-            .then(_ => res.send('OK'))
-            .catch(error => console.log(error));
-    }
+    entity_1.default.findOne(id)
+        .then(sensor => {
+        if (sensor) {
+            entity_1.default.merge(sensor, update).save()
+                .then(s => {
+                console.log(s.value);
+                res.send(s);
+            })
+                .catch(error => console.log(error));
+        }
+    }).catch(error => console.log(error));
 });
 router.post('/new', Cors(), (req, res) => {
     if (req.body.macAddres) {
